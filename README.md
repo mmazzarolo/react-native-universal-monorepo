@@ -1,4 +1,4 @@
-# Universal React Native Monorepo
+# React Native Universal Monorepo
 
 &nbsp;
 
