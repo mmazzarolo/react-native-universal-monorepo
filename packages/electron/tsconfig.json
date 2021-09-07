@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "esnext"
+    ],
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext"
+  },
+  "include": [
+    "public",
+    "src"
+  ]
+}
