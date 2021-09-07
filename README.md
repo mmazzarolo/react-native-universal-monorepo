@@ -3,7 +3,7 @@
 &nbsp;
 
 <p align="center" margin-bottom="0">
-  <img width="820" height="auto" src="./.github/all-screenshot.png">
+  <img width="820" height="auto" src="./.github/images/all-screenshot.png">
 </p>
 
 ## Supported platforms
