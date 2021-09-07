@@ -13,12 +13,29 @@ const watchFolders = [
 
 module.exports = {
   transformer: {
+    publicPath: '/assets/dir1/dir2/dir3',
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
         inlineRequires: true,
       },
     }),
+  },
+  server: {
+    enhanceMiddleware: (middleware, server) => {
+      return (req, res, next) => {
+        if(req.url.startsWith("/assets/dir1/dir2/dir3")){
+          req.url = req.url.replace('/assets/dir1/dir2/dir3', '/assets');
+        }else if(req.url.startsWith("/assets/dir1/dir2")){
+          req.url = req.url.replace('/assets/dir1/dir2', '/assets/..');
+        }else if(req.url.startsWith("/assets/dir1")){
+          req.url = req.url.replace('/assets/dir1', '/assets/../..');
+        }else if(req.url.startsWith("/assets")){
+          req.url = req.url.replace('/assets', '/assets/../../..');
+        }
+        return middleware(req, res, next);
+      };
+    },
   },
   watchFolders: watchFolders,
   resolver: {

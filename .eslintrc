@@ -1,5 +1,6 @@
 {
   "root": true,
+  "ignorePatterns": ["**/*.d.ts"],
   "overrides": [
     {
       "files": "**/*.+(ts|tsx)",

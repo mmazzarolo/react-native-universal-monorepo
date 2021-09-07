@@ -1,39 +1,66 @@
 import React from "react";
 import {
+  Image,
+  Platform,
   SafeAreaView,
   StyleSheet,
   Text,
+  View,
 } from "react-native";
+import LogoSrc from "./logo.png";
 
-interface SectionProps {
-  title: string;
-  children?: React.ReactNode;
-}
+declare var __SUB_PLATFORM__: string | undefined; // eslint-disable-line
 
-export const App = () => {
+export function App(): JSX.Element {
+  let platform = Platform.OS;
+  if (typeof __SUB_PLATFORM__ === "string") {
+    platform += ` (${__SUB_PLATFORM__})`;
+  }
   return (
-    <SafeAreaView>
-      <Text>Hello!</Text>
+    <SafeAreaView style={styles.root}>
+      <Image style={styles.logo} source={LogoSrc as any} />
+      <Text style={styles.text}>Hello from React Native!</Text>
+      <View style={styles.platformRow}>
+        <Text style={styles.text}>Platform: </Text>
+        <View style={styles.platformBackground}>
+          <Text style={styles.platform}>{platform}</Text>
+        </View>
+      </View>
     </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  root: {
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "white"
   },
-  sectionTitle: {
-    fontSize: 24,
+  logo: {
+    width: 120,
+    height: 120,
+    marginBottom: 20,
+  },
+  text: {
+    fontSize: 28,
     fontWeight: "600",
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: "400",
+  platformRow: {
+    marginTop: 12,
+    flexDirection: "row",
+    alignItems: "center",
   },
-  highlight: {
-    fontWeight: "700",
+  platform: {
+    fontSize: 28,
+    fontWeight: "500",
+  },
+  platformBackground: {
+    backgroundColor: "#ececec",
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: '#d4d4d4',
+    paddingHorizontal: 6,
+    borderRadius: 6,
+    alignItems: "center",
   },
 });
-

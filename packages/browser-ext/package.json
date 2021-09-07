@@ -1,10 +1,10 @@
 {
-  "name": "@rnup/web",
+  "name": "@rnup/browser-ext",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
+    "start": "INLINE_RUNTIME_CHUNK=false craco start",
+    "build": "INLINE_RUNTIME_CHUNK=false craco build",
     "test": "react-scripts test --watchAll=false --passWithNoTests",
     "eject": "react-scripts eject",
     "lint": "eslint .",
@@ -29,9 +29,9 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ],
     "development": [
       "last 1 chrome version",
