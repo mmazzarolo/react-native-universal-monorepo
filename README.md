@@ -30,10 +30,16 @@ On the other hand, we get a predictable React Native setup: we don't have to dea
 
 ## Getting started
 
-> 🚧 I'm working on a blog post to explain how to get to this monorepo structure from scratch.
-
 1. Clone the repository: `git@github.com:mmazzarolo/react-native-universal-monorepo.git`
 2. Run yarn install `cd react-native-universal-monorepo && yarn`
+
+
+> 🚧 I'm working on a blog post to explain how to get to this monorepo structure from scratch.  
+> For now, if you're interested, please check the following guides:
+> - [Run your React Native app on the web with React Native for Web
+](https://mmazzarolo.com/blog/2020-10-24-adding-react-native-web/)
+> - [Building a desktop application using Electron and Create React App](https://mmazzarolo.com/blog/2021-08-12-building-an-electron-application-using-create-react-app/)
+> - [Developing a browser extension with Create React App](https://mmazzarolo.com/blog/2019-10-19-browser-extension-development/)
 
 ## Available commands
 
