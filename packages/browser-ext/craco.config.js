@@ -13,7 +13,8 @@ module.exports = {
         __DEV__: process.env.NODE_ENV !== "production",
       }),
       // Inject the "__SUB_PLATFORM__" global variable. 
-      // It can be used to determine that we're running withing a browser ext.
+      // It can be used to determine whether we're running withing a 
+      // browser extension or not.
       new webpack.DefinePlugin({
         __SUB_PLATFORM__: JSON.stringify("broswer-ext"),
       }),

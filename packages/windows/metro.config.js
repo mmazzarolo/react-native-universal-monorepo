@@ -4,12 +4,6 @@ const getWorkspaces = require("get-yarn-workspaces");
 
 const workspaces = getWorkspaces(__dirname);
 
-// Add additional Yarn workspace package roots to the module map
-const watchFolders = [
-  path.resolve(__dirname, "../../node_modules"),
-  ...workspaces.filter((workspaceDir) => !(workspaceDir === __dirname)),
-];
-
 module.exports = {
   resolver: {
     blockList: exclusionList([
@@ -21,19 +15,24 @@ module.exports = {
       /.*\.ProjectImports\.zip/,
     ]),
   },
-  watchFolders: watchFolders,
+  // Add additional Yarn workspace package roots to the module map.
+  // This allows importing importing from all the project's packages.
+  watchFolders: [
+    path.resolve(__dirname, "../../node_modules"),
+    ...workspaces.filter((workspaceDir) => !(workspaceDir === __dirname)),
+  ],
   transformer: {
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
-        inlineRequires: true,
+        inlineRequires: true, // Required for macos and windows builds.
       },
     }),
   },
   resolver: {
     extraNodeModules: {
-      // Resolve all react-native module imports to the locally-installed version
-      // of react-native-windows
+      // Resolve all react-native module imports to the locally-installed 
+      // version of react-native-windows.
       "react-native": path.resolve(
         __dirname,
         "node_modules",

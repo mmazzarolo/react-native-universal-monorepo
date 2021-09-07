@@ -1,19 +1,16 @@
-const path = require('path');
-const exclusionList = require('metro-config/src/defaults/exclusionList');
-const getWorkspaces = require('get-yarn-workspaces');
+const path = require("path");
+const exclusionList = require("metro-config/src/defaults/exclusionList");
+const getWorkspaces = require("get-yarn-workspaces");
+const { getAndroidAssetsResolutionFix } = require("./metro-android-assets-resolution-fix");
 
 const workspaces = getWorkspaces(__dirname);
 
-// Add additional Yarn workspace package roots to the module map
-const watchFolders = [
-  path.resolve(__dirname, '../../node_modules'),
-  ...workspaces.filter(workspaceDir => !(workspaceDir === __dirname)),
-];
-
+const androidAssetsResolutionFix = getAndroidAssetsResolutionFix({ depth: 3 });
 
 module.exports = {
   transformer: {
-    publicPath: '/assets/dir1/dir2/dir3',
+    // Apply the Android assets resolution fix to the public path...
+    publicPath: androidAssetsResolutionFix.publicPath,
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
@@ -22,29 +19,23 @@ module.exports = {
     }),
   },
   server: {
-    enhanceMiddleware: (middleware, server) => {
-      return (req, res, next) => {
-        if(req.url.startsWith("/assets/dir1/dir2/dir3")){
-          req.url = req.url.replace('/assets/dir1/dir2/dir3', '/assets');
-        }else if(req.url.startsWith("/assets/dir1/dir2")){
-          req.url = req.url.replace('/assets/dir1/dir2', '/assets/..');
-        }else if(req.url.startsWith("/assets/dir1")){
-          req.url = req.url.replace('/assets/dir1', '/assets/../..');
-        }else if(req.url.startsWith("/assets")){
-          req.url = req.url.replace('/assets', '/assets/../../..');
-        }
-        return middleware(req, res, next);
-      };
+    // ...and to the server middleware.
+    enhanceMiddleware: (middleware) => {
+      return androidAssetsResolutionFix.applyMiddleware(middleware)
     },
   },
-  watchFolders: watchFolders,
+  // Add additional Yarn workspace package roots to the module map.
+  // This allows importing importing from all the project's packages.
+  watchFolders: [
+    path.resolve(__dirname, "../../node_modules"),
+    ...workspaces.filter((workspaceDir) => !(workspaceDir === __dirname)),
+  ],
   resolver: {
     extraNodeModules: {
-      // Resolve all react-native module imports to the locally-installed version
-      'react-native': path.resolve(__dirname, 'node_modules', 'react-native'),
-
-      // Resolve core-js imports to the locally installed version
-      'core-js': path.resolve(__dirname, 'node_modules', 'core-js'),
+      // Resolve all react-native module imports to the locally-installed
+      // version to ensure we don't hit cases where react-native tries to be
+      // resolved from multiple node_modules dirs.
+      "react-native": path.resolve(__dirname, "node_modules", "react-native"),
     },
   },
 };

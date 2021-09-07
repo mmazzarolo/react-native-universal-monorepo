@@ -1,29 +1,30 @@
 import React from "react";
 import {
   Image,
+  ImageSourcePropType,
   Platform,
   SafeAreaView,
   StyleSheet,
   Text,
   View,
 } from "react-native";
+import { subPlatform } from "./config";
 import LogoSrc from "./logo.png";
 
-declare var __SUB_PLATFORM__: string | undefined; // eslint-disable-line
-
 export function App(): JSX.Element {
-  let platform = Platform.OS;
-  if (typeof __SUB_PLATFORM__ === "string") {
-    platform += ` (${__SUB_PLATFORM__})`;
-  }
+  const platformValue = subPlatform
+    ? `${Platform.OS} (${subPlatform})`
+    : Platform.OS;
   return (
     <SafeAreaView style={styles.root}>
-      <Image style={styles.logo} source={LogoSrc as any} />
+      {/* On React Native for Windows builds coming from CRA, TypeScript 
+          complains about the image type, so we cast it as a workaround  */}
+      <Image style={styles.logo} source={LogoSrc as ImageSourcePropType} />
       <Text style={styles.text}>Hello from React Native!</Text>
       <View style={styles.platformRow}>
         <Text style={styles.text}>Platform: </Text>
         <View style={styles.platformBackground}>
-          <Text style={styles.platform}>{platform}</Text>
+          <Text style={styles.platformValue}>{platformValue}</Text>
         </View>
       </View>
     </SafeAreaView>
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
     height: "100%",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
   logo: {
     width: 120,
@@ -51,14 +52,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  platform: {
+  platformValue: {
     fontSize: 28,
     fontWeight: "500",
   },
   platformBackground: {
     backgroundColor: "#ececec",
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#d4d4d4',
+    borderColor: "#d4d4d4",
     paddingHorizontal: 6,
     borderRadius: 6,
     alignItems: "center",
