@@ -1,0 +1,27 @@
+{
+  "root": true,
+  "overrides": [
+    {
+      "files": "**/*.+(ts|tsx)",
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint", "react-native"],
+      "extends": [
+        "plugin:react/recommended",
+        "prettier",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+      ]
+    },
+    {
+      "files": "**/*.+(js|jsx)",
+      "parser": "babel-eslint",
+      "plugins": ["react-native"],
+      "extends": ["plugin:react/recommended", "prettier"]
+    }
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

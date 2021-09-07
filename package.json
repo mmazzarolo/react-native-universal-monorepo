@@ -1,0 +1,45 @@
+{
+  "name": "react-native-universal-project",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/react-native",
+      "**/react-native-macos",
+      "**/react-native/**",
+      "**/react-native-dev-menu"
+    ]
+  },
+  "scripts": {
+    "reset": "find . -type dir -name node_modules | xargs rm -rf && rm -rf yarn.lock",
+    "android:metro": "yarn workspace @rnup/mobile start",
+    "android:start": "yarn workspace @rnup/mobile android",
+    "android:studio": "yarn workspace @rnup/mobile studio",
+    "ios:metro": "yarn workspace @rnup/mobile ios",
+    "ios:start": "yarn workspace @rnup/mobile ios",
+    "ios:xcode": "yarn workspace @rnup/mobile xcode",
+    "macos:metro": "yarn workspace @rnup/macos macos",
+    "macos:start": "yarn workspace @rnup/macos macos",
+    "macos:xcode": "yarn workspace @rnup/macos xcode",
+    "web:start": "yarn workspace @rnup/web start",
+    "web:build": "yarn workspace @rnup/web build",
+    "lint": "ultra -r lint",
+    "lint:fix": "ultra -r lint:fix",
+    "test": "ultra -r test",
+    "typecheck": "ultra -r typecheck"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react-app": "^6.2.2",
+    "eslint-plugin-react-native": "^3.11.0",
+    "prettier": "^2.3.2",
+    "typescript": "^4.4.2",
+    "ultra-runner": "^3.10.5"
+  }
+}

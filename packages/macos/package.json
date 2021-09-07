@@ -1,0 +1,30 @@
+{
+  "name": "@rnup/macos",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "macos": "react-native run-macos",
+    "xcode": "xed macos",
+    "start": "react-native start",
+    "lint": "eslint .",
+    "lint:fix": "yarn lint --fix",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "@rnup/core": "*",
+    "react": "16.13.1",
+    "react-native": "0.63.0",
+    "react-native-macos": "^0.63.0-0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/runtime": "^7.8.4",
+    "babel-jest": "^25.1.0",
+    "jest": "^25.1.0",
+    "metro-react-native-babel-preset": "^0.59.0",
+    "react-test-renderer": "16.13.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
