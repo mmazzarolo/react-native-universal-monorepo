@@ -16,7 +16,7 @@ It uses Yarn's `nohoist` to ensure the `react-native` libraries are stored withi
 On one hand, this approach has the drawback of (potentially) keeping multiple copies of the same React Native version in different workspace packages.  
 On the other hand, we get a predictable React Native setup: we don't have to deal with changing root directory references in the native code, and we can support different versions of React Native while still sharing the app's code.
 
-> Please notice that this is not the _right_ way to do React Native monorepos. It's just an approach that I enjoy using.
+> Please notice that I'm not saying that this is not the _right_ way to do React Native monorepos. It's just an approach that I enjoy using.
 
 ## Supported platforms
 
