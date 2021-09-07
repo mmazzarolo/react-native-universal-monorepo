@@ -58,5 +58,5 @@ On the other hand, we get a predictable React Native setup: we don't have to dea
 - `yarn windows:start`: Start developing the windows app
 - `yarn lint`: Lint each project
 - `yarn lint:fix`: Lint + fix each project
-- `yarn test`: Run test of each project
+- `yarn test`: Run tests of each project
 - `yarn typecheck`: Run the TypeScript type-checking on each project
