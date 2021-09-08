@@ -15,9 +15,15 @@
     },
     {
       "files": "**/*.+(js|jsx)",
-      "parser": "babel-eslint",
-      "plugins": ["react-native"],
-      "extends": ["plugin:react/recommended", "prettier"]
+      "env": {
+        "commonjs": true,
+        "es6": true,
+        "node": true
+      },
+      "parserOptions": {
+        "ecmaVersion": 2018
+      },
+      "extends": ["eslint:recommended", "prettier"]
     }
   ],
   "settings": {

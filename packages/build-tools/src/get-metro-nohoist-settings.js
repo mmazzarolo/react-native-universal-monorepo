@@ -1,15 +1,15 @@
 const path = require("path");
-const { getNohoistedPackages } = require("./get-nohoisted-packages");
+const { getNohoistLibraries } = require("./get-nohoist-libraries");
 
 // Get a set of metro's "extraNodeModules" and "blockList" settings compatible
-// with our monorepo nohoist approach (so that nohoisted dependencies are
+// with our monorepo nohoist approach (so that nohois dependencies are
 // always forcefully resolved from the project directory). 
 function getMetroNohoistSettings({
   dir,
   workspaceName,
   reactNativeAlias,
 } = {}) {
-  const nohoistedPackages = getNohoistedPackages();
+  const nohoistedPackages = getNohoistLibraries();
   const blockList = [];
   const extraNodeModules = {};
   nohoistedPackages.forEach((packageName) => {

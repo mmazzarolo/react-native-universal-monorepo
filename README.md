@@ -10,13 +10,28 @@ A React Native monorepo boilerplate supporting multiple platforms: Android, iOS,
 
 ## Overview
 
-This monorepo uses [Yarn workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) and [TypeScript](https://www.typescriptlang.org/) to support a modular React Native project.
+This monorepo uses [Yarn workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) and [TypeScript](https://www.typescriptlang.org/) to support a modular React Native project.  
 
-It uses Yarn's `nohoist` to ensure the `react-native` libraries are stored within the workspace packages instead of being hosted to the top level.  
-On one hand, this approach has the drawback of (potentially) keeping multiple copies of the same React Native version in different workspace packages.  
-On the other hand, we get a predictable React Native setup: we don't have to deal with changing root directory references in the native code, and we can support different versions of React Native while still sharing the app's code.
+To reduce redundancy, most package managers employ some kind of hoisting scheme to extract and flatten all dependent modules, as much as possible, into a centralized location.  
+Yarn workspaces store the flattened dependencies in a `node_modules` directory in the project root and makes it accessible to the workspace packages by symlinking the libraries in the packages' `node_module` directory. 
 
-> Please notice that I'm not saying that this is not the _right_ way to do React Native monorepos. It's just an approach that I enjoy using.
+While it might appear that we can access all modules from the project’s root `node_modules`, the reality is that build processes sometimes aren't able to traverse symlinks.  
+This problem is especially prominent in React Native apps, where both the [metro bundler](https://github.com/facebook/metro/issues/1) and the native code can't follow symlinks.  
+
+A common way to solve this issue in React Native monorepos, is to configure the metro bundler and the native layer to use the project's root `node_modules` directory instead of the package's one.  
+While this approach ensures you gain all the benefits of the hoisting process, it introduces a few complexities:
+- Each time you update React Native (or a library that requires native linking), you must also update (or at least keep in sync) the native code with the root project's `node_modules` directory. To me, this process have always seemed error prone, because you're dealing with multiple languages and build-tools.  
+- Suppose your packages need different versions of React Native (or of a library that requires native linking). In that case, you can't easily ensure it will be installed in a specific location (unless you give up the hoisting mechanism) — adding even more complexities to the table.  
+
+For these reasons, React Native Universal Monorepo uses a different approach, fully embracing [Yarn's `nohoist`](https://classic.yarnpkg.com/blog/2018/02/15/nohoist/).  
+
+Of course, this comes with drawbacks. The most obvious one is that nohoist modules could be duplicated in multiple locations, denying the benefit of hoisting mentioned above. Therefore, we'll keep `nohoist` scope as small and explicit as possible, targeting only problematic libraries.  
+
+Thanks to nohoist, we can avoid making changes to the native code, and we can keep the monorepo configuration in the JavaScript land. This means we can even [extract common metro and webpack settings in a workspace package](https://github.com/mmazzarolo/react-native-universal-monorepo/tree/master/packages/build-tools/src) to share them easily across the entire project.  
+
+Additionally, different platforms can use different versions of React Native (and native libraries), favoring incremental updates instead of migrating the entire project.
+
+> Please notice that I'm not saying that this is the _right_ way to do React Native monorepos. It's just an approach that I enjoy using.  
 
 ## Supported platforms
 
@@ -43,6 +58,8 @@ On the other hand, we get a predictable React Native setup: we don't have to dea
 
 ## Available commands
 
+Development and build commands:
+
 - `yarn android:metro`: Start the metro server for android/iOS
 - `yarn android:start`: Start developing the android app
 - `yarn android:studio`: Open the android app on android Studio
@@ -62,19 +79,23 @@ On the other hand, we get a predictable React Native setup: we don't have to dea
 - `yarn browser-ext:build`: Create a production build of the browser extension
 - `yarn windows:metro`: Start the metro server for windows
 - `yarn windows:start`: Start developing the windows app
+
+Other commands (we use [ultra-runner](https://github.com/folke/ultra-runner) to run these commands on all workspaces): 
+
 - `yarn lint`: Lint each project
 - `yarn lint:fix`: Lint + fix each project
 - `yarn test`: Run tests of each project
 - `yarn typecheck`: Run the TypeScript type-checking on each project
 
+
 ## Native dependencies
 
-While working on React Native in a monorepo, you'll notice that several packages won't work correctly when "hoisted" (aka they are installed at the root) — either because they need to be natively linked or because they end up being bundled twice, breaking the build (e.g., `react`, `react-dom`).  
-This is not an issue with the approach used in this project per se', it's more of a common problem with monorepos.  
+While working on React Native in a monorepo, you'll notice that several packages won't work correctly when hoisted — either because they need to be natively linked or because they end up being bundled twice, breaking the build (e.g., `react`, `react-dom`).  
+This is not an issue with the approach used in this project per se. It's more of a common problem with monorepos.  
 
-To fix these issues, [we mark them as `nohoist`](https://classic.yarnpkg.com/blog/2018/02/15/nohoist/), so they will be installed in each package that depends on them.  
+To fix these issues, [we mark them as nohoist](https://classic.yarnpkg.com/blog/2018/02/15/nohoist/), so they will be installed in each package that depends on them.  
 
-In this monorepo you can see an example of such libraries in `react-native-async-storage`.  
+In this monorepo, you can see an example of such libraries in `react-native-async-storage`.  
 
-In the Metro bundler and Webpack configs used across the monorepo, [I'm using a set of build-tools](https://github.com/mmazzarolo/react-native-universal-monorepo/tree/master/packages/build-tools) that ensures nohoisted packages are resolved correctly.  
-So, as long as you add these libraries [to the `nohoist` list](https://github.com/mmazzarolo/react-native-universal-monorepo/blob/a7dcfcbe7c7df66f6d11f06dd13f51ff94b1e70c/package.json#L9-L19), you should be good to go 👍
+In the metro bundler and Webpack configs used across the monorepo, [I'm using a set of build-tools](https://github.com/mmazzarolo/react-native-universal-monorepo/tree/master/packages/build-tools) that ensures nohoisted packages are resolved correctly.  
+So, as long as you add these libraries [to the `nohoist` list](https://github.com/mmazzarolo/react-native-universal-monorepo/blob/a7dcfcbe7c7df66f6d11f06dd13f51ff94b1e70c/package.json#L9-L19), you should be good to go 👍  

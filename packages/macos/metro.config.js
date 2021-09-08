@@ -27,7 +27,7 @@ module.exports = {
     ...workspaces.filter((workspaceDir) => !(workspaceDir === __dirname)),
   ],
   resolver: {
-    // Ensure we resolve nohoisted packages from this directory.
+    // Ensure we resolve nohoist libraries from this directory.
     blacklistRE: exclusionList(nohoistSettings.blockList),
     extraNodeModules: nohoistSettings.extraNodeModules,
   },

@@ -2,9 +2,6 @@ const path = require("path");
 const exclusionList = require("metro-config/src/defaults/exclusionList");
 const getWorkspaces = require("get-yarn-workspaces");
 const {
-  getAndroidAssetsResolutionFix,
-} = require("./metro-android-assets-resolution-fix");
-const {
   getMetroNohoistSettings,
   getMetroAndroidAssetsResolutionFix,
 } = require("@rnup/build-tools");
@@ -44,7 +41,7 @@ module.exports = {
     ...workspaces.filter((workspaceDir) => !(workspaceDir === __dirname)),
   ],
   resolver: {
-    // Ensure we resolve nohoisted packages from this directory.
+    // Ensure we resolve nohoist libraries from this directory.
     blockList: exclusionList(nohoistSettings.blockList),
     extraNodeModules: nohoistSettings.extraNodeModules,
   },

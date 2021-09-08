@@ -1,4 +1,6 @@
-function getNohoistedPackages() {
+// Extract the libraries added to the "nohoist" section of the monorepo's root
+// package.json.
+function getNohoistLibraries() {
   const monorepoRootPackageJson = require("../../../package.json");
   const nohoistedPackages = monorepoRootPackageJson.workspaces.nohoist
     .filter((packageNameGlob) => !packageNameGlob.endsWith("**"))
@@ -7,5 +9,5 @@ function getNohoistedPackages() {
 }
 
 module.exports = {
-  getNohoistedPackages,
+  getNohoistLibraries,
 };

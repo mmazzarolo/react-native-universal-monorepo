@@ -5,6 +5,12 @@ const { getMetroNohoistSettings } = require("@rnup/build-tools");
 
 const workspaces = getWorkspaces(__dirname);
 
+const nohoistSettings = getMetroNohoistSettings({
+  dir: __dirname,
+  workspaceName: "windows",
+  reactNativeAlias: 'react-native-windows'
+});
+
 module.exports = {
   resolver: {
     blockList: exclusionList([
@@ -15,10 +21,10 @@ module.exports = {
       // This prevents "react-native run-windows" from hitting: EBUSY: resource busy or locked, open msbuild.ProjectImports.zip
       /.*\.ProjectImports\.zip/,
 
-      // Ensure we resolve nohoisted packages from this directory.
+      // Ensure we resolve nohoist libraries from this directory.
       ...nohoistSettings.blockList,
     ]),
-    // Ensure we resolve nohoisted packages from this directory.
+    // Ensure we resolve nohoist libraries from this directory.
     extraNodeModules: nohoistSettings.extraNodeModules,
   },
   // Add additional Yarn workspace package roots to the module map.
