@@ -297,6 +297,8 @@ PODS:
     - React-Core (= 0.63.37)
     - React-cxxreact (= 0.63.37)
     - React-jsi (= 0.63.37)
+  - RNCAsyncStorage (1.15.7):
+    - React-Core
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -349,6 +351,7 @@ DEPENDENCIES:
   - React-RCTText (from `../node_modules/react-native-macos/Libraries/Text`)
   - React-RCTVibration (from `../node_modules/react-native-macos/Libraries/Vibration`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native-macos/ReactCommon`)
+  - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - Yoga (from `../node_modules/react-native-macos/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -420,6 +423,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-macos/Libraries/Vibration"
   ReactCommon:
     :path: "../node_modules/react-native-macos/ReactCommon"
+  RNCAsyncStorage:
+    :path: "../node_modules/@react-native-async-storage/async-storage"
   Yoga:
     :path: "../node_modules/react-native-macos/ReactCommon/yoga"
 
@@ -462,9 +467,10 @@ SPEC CHECKSUMS:
   React-RCTText: 2f9504b1157ccce317774eb3ca935a923ddc95d7
   React-RCTVibration: db89493e2520ad419eeb59e40059e246d9e71607
   ReactCommon: 014dd1ff02eab367fa6676b7b408d1a08893a98d
+  RNCAsyncStorage: 7102fe8985f889579a3ae148d957bbb3f308122b
   Yoga: 77d9987384e26b4aaf3e7a01808838cc2d4304f2
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 5f78a5ded37c4da19eb8d8e6eaf8f5c98223a7af
+PODFILE CHECKSUM: 9fa2e65bdcf48e59da0104b3b2f4880f6b768bb2
 
 COCOAPODS: 1.10.1

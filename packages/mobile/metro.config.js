@@ -1,11 +1,24 @@
 const path = require("path");
 const exclusionList = require("metro-config/src/defaults/exclusionList");
 const getWorkspaces = require("get-yarn-workspaces");
-const { getAndroidAssetsResolutionFix } = require("./metro-android-assets-resolution-fix");
+const {
+  getAndroidAssetsResolutionFix,
+} = require("./metro-android-assets-resolution-fix");
+const {
+  getMetroNohoistSettings,
+  getMetroAndroidAssetsResolutionFix,
+} = require("@rnup/build-tools");
 
 const workspaces = getWorkspaces(__dirname);
 
-const androidAssetsResolutionFix = getAndroidAssetsResolutionFix({ depth: 3 });
+const androidAssetsResolutionFix = getMetroAndroidAssetsResolutionFix({
+  depth: 3,
+});
+
+const nohoistSettings = getMetroNohoistSettings({
+  dir: __dirname,
+  workspaceName: "mobile",
+});
 
 module.exports = {
   transformer: {
@@ -14,14 +27,14 @@ module.exports = {
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
-        inlineRequires: true,
+        inlineRequires: false,
       },
     }),
   },
   server: {
     // ...and to the server middleware.
     enhanceMiddleware: (middleware) => {
-      return androidAssetsResolutionFix.applyMiddleware(middleware)
+      return androidAssetsResolutionFix.applyMiddleware(middleware);
     },
   },
   // Add additional Yarn workspace package roots to the module map.
@@ -31,11 +44,8 @@ module.exports = {
     ...workspaces.filter((workspaceDir) => !(workspaceDir === __dirname)),
   ],
   resolver: {
-    extraNodeModules: {
-      // Resolve all react-native module imports to the locally-installed
-      // version to ensure we don't hit cases where react-native tries to be
-      // resolved from multiple node_modules dirs.
-      "react-native": path.resolve(__dirname, "node_modules", "react-native"),
-    },
+    // Ensure we resolve nohoisted packages from this directory.
+    blockList: exclusionList(nohoistSettings.blockList),
+    extraNodeModules: nohoistSettings.extraNodeModules,
   },
 };

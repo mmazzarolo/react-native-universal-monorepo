@@ -1,6 +1,7 @@
-const path = require('path');
-const exclusionList = require('metro-config/src/defaults/exclusionList');
+const path = require("path");
+const exclusionList = require("metro-config/src/defaults/exclusionList");
 const getWorkspaces = require("get-yarn-workspaces");
+const { getMetroNohoistSettings } = require("@rnup/build-tools");
 
 const workspaces = getWorkspaces(__dirname);
 
@@ -9,11 +10,16 @@ module.exports = {
     blockList: exclusionList([
       // This stops "react-native run-windows" from causing the metro server to crash if its already running
       new RegExp(
-        `${path.resolve(__dirname, 'windows').replace(/[/\\]/g, '/')}.*`,
+        `${path.resolve(__dirname, "windows").replace(/[/\\]/g, "/")}.*`
       ),
       // This prevents "react-native run-windows" from hitting: EBUSY: resource busy or locked, open msbuild.ProjectImports.zip
       /.*\.ProjectImports\.zip/,
+
+      // Ensure we resolve nohoisted packages from this directory.
+      ...nohoistSettings.blockList,
     ]),
+    // Ensure we resolve nohoisted packages from this directory.
+    extraNodeModules: nohoistSettings.extraNodeModules,
   },
   // Add additional Yarn workspace package roots to the module map.
   // This allows importing importing from all the project's packages.
@@ -28,16 +34,5 @@ module.exports = {
         inlineRequires: true, // Required for macos and windows builds.
       },
     }),
-  },
-  resolver: {
-    extraNodeModules: {
-      // Resolve all react-native module imports to the locally-installed 
-      // version of react-native-windows.
-      "react-native": path.resolve(
-        __dirname,
-        "node_modules",
-        "react-native-windows"
-      )
-    },
   },
 };
