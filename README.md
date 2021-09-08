@@ -69,6 +69,12 @@ On the other hand, we get a predictable React Native setup: we don't have to dea
 
 ## Native dependencies
 
-For some native (or React-Native-specific) dependencies, you'll need to `nohoist` them and/or update the metro configuration to avoid collisions with multiple versions of them.  
-This is not an issue with the approach used in this project per se', it's a common problem with monorepos.  
-You can use [`babel-plugin-module-resolver`](https://github.com/tleunen/babel-plugin-module-resolver) to dedupe these dependencies — planning to add an example soon.  
+While working on React Native in a monorepo, you'll notice that several packages won't work correctly when "hoisted" (aka they are installed at the root) — either because they need to be natively linked or because they end up being bundled twice, breaking the build (e.g., `react`, `react-dom`).  
+This is not an issue with the approach used in this project per se', it's more of a common problem with monorepos.  
+
+To fix these issues, [we mark them as `nohoist`](https://classic.yarnpkg.com/blog/2018/02/15/nohoist/), so they will be installed in each package that depends on them.  
+
+In this monorepo you can see an example of such libraries in `react-native-async-storage`.  
+
+In the Metro bundler and Webpack configs used across the monorepo, [I'm using a set of build-tools](https://github.com/mmazzarolo/react-native-universal-monorepo/tree/master/packages/build-tools) that ensures nohoisted packages are resolved correctly.  
+So, as long as you add these libraries [to the `nohoist` list](https://github.com/mmazzarolo/react-native-universal-monorepo/blob/a7dcfcbe7c7df66f6d11f06dd13f51ff94b1e70c/package.json#L9-L19), you should be good to go 👍
