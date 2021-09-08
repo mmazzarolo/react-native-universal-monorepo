@@ -1,8 +1,15 @@
 const path = require("path");
 const exclusionList = require("metro-config/src/defaults/exclusionList");
 const getWorkspaces = require("get-yarn-workspaces");
+const { getMetroNohoistSettings } = require("@rnup/build-tools/src");
 
 const workspaces = getWorkspaces(__dirname);
+
+const nohoistSettings = getMetroNohoistSettings({
+  dir: __dirname,
+  workspaceName: "macos",
+  reactNativeAlias: 'react-native-macos'
+});
 
 module.exports = {
   transformer: {
@@ -20,14 +27,8 @@ module.exports = {
     ...workspaces.filter((workspaceDir) => !(workspaceDir === __dirname)),
   ],
   resolver: {
-    extraNodeModules: {
-      // Resolve all react-native module imports to the locally-installed 
-      // version of react-native-macos.
-      "react-native": path.resolve(
-        __dirname,
-        "node_modules",
-        "react-native-macos"
-      )
-    },
+    // Ensure we resolve nohoisted packages from this directory.
+    blacklistRE: exclusionList(nohoistSettings.blockList),
+    extraNodeModules: nohoistSettings.extraNodeModules,
   },
 };

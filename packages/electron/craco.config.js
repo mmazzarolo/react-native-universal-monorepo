@@ -1,12 +1,13 @@
 const path = require("path");
 const { getLoader, loaderByName, whenDev } = require("@craco/craco");
 const webpack = require("webpack");
+const { getWebpackNohoistAlias } = require("@rnup/build-tools/src");
 
 const externalPackages = [path.join(__dirname, "../core")]
 
 module.exports = {
   webpack: {
-    alias: {},
+    alias: getWebpackNohoistAlias(__dirname),
     plugins: [
       // Inject the "__DEV__" global variable.
       new webpack.DefinePlugin({

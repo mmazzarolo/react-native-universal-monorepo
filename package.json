@@ -7,6 +7,9 @@
       "packages/*"
     ],
     "nohoist": [
+      "**/@react-native-async-storage/async-storage",
+      "**/react",
+      "**/react-dom",
       "**/react-native",
       "**/react-native/**",
       "**/react-native-codegen",

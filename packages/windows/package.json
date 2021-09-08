@@ -12,6 +12,7 @@
     "windows": "react-native run-windows"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.15.7",
     "react": "17.0.2",
     "react-native": "0.65.0",
     "react-native-windows": "0.65.2"
