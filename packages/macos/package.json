@@ -6,6 +6,7 @@
     "macos": "react-native run-macos",
     "xcode": "xed macos",
     "start": "react-native start",
+    "pods": "pod-install",
     "lint": "eslint .",
     "lint:fix": "yarn lint --fix",
     "test": "jest --passWithNoTests"
@@ -23,7 +24,8 @@
     "babel-jest": "^25.1.0",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
-    "react-test-renderer": "16.13.1"
+    "react-test-renderer": "16.13.1",
+    "pod-install": "0.1.27"
   },
   "jest": {
     "preset": "react-native"

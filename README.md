@@ -65,9 +65,11 @@ Development and build commands:
 - `yarn android:studio`: Open the android app on android Studio
 - `yarn ios:metro`: Start the metro server for android/iOS
 - `yarn ios:start`: Start developing the iOS app
+- `yarn ios:pods`: Install iOS cocoapods dependencies
 - `yarn ios:xcode`: Open the iOS app on XCode
 - `yarn macos:metro`: Start the metro server for macOS
 - `yarn macos:start`: Start developing the macOS app
+- `yarn macos:pods`: Install macOS cocoapods dependencies
 - `yarn macos:xcode`: Open the macOS app on XCode
 - `yarn web:start`: Start developing the web app
 - `yarn web:build`: Create a production build of the web app
