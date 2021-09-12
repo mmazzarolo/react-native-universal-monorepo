@@ -1,3 +1,9 @@
 module.exports = {
-  extends: ["../../.eslintrc"]
+  extends: ["../../.eslintrc"],
+  "overrides": [
+    {
+      "files": "./index.js",
+      "parser": "babel-eslint"
+    }
+  ],
 };
