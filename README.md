@@ -51,8 +51,8 @@ Additionally, different platforms can use different versions of React Native (an
 2. Run yarn install `cd react-native-universal-monorepo && yarn`
 
 
-> 🚧 I'm working on a blog post to explain how to get to this monorepo structure from scratch.  
-> For now, if you're interested, please check the following guides:
+> 🚧 I'm working on a blog post to explain how to get to this monorepo structure from scratch:  __[Running React Native everywhere](https://mmazzarolo.com/blog/2021-09-11-running-react-native-everywhere/)__
+> It's still a WIP. In the meanwhile, if you're interested, please check the following guides:
 > - [Run your React Native app on the web with React Native for Web
 ](https://mmazzarolo.com/blog/2020-10-24-adding-react-native-web/)
 > - [Building a desktop application using Electron and Create React App](https://mmazzarolo.com/blog/2021-08-12-building-an-electron-application-using-create-react-app/)
