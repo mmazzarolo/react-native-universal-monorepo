@@ -28,7 +28,7 @@ export function App(): JSX.Element {
           <Text style={styles.platformValue}>{platformValue}</Text>
         </View>
       </View>
-      <AsyncStorageExample/>
+      <AsyncStorageExample />
     </SafeAreaView>
   );
 }
@@ -65,5 +65,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: 6,
     borderRadius: 6,
     alignItems: "center",
-  }
+  },
 });

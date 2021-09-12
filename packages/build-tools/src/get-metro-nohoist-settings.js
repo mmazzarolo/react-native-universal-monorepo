@@ -3,7 +3,7 @@ const { getNohoistLibraries } = require("./get-nohoist-libraries");
 
 // Get a set of metro's "extraNodeModules" and "blockList" settings compatible
 // with our monorepo nohoist approach (so that nohois dependencies are
-// always forcefully resolved from the project directory). 
+// always forcefully resolved from the project directory).
 function getMetroNohoistSettings({
   dir,
   workspaceName,

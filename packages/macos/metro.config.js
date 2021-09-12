@@ -8,7 +8,7 @@ const workspaces = getWorkspaces(__dirname);
 const nohoistSettings = getMetroNohoistSettings({
   dir: __dirname,
   workspaceName: "macos",
-  reactNativeAlias: 'react-native-macos'
+  reactNativeAlias: "react-native-macos",
 });
 
 module.exports = {

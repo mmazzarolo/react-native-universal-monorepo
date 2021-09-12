@@ -8,7 +8,7 @@ const workspaces = getWorkspaces(__dirname);
 const nohoistSettings = getMetroNohoistSettings({
   dir: __dirname,
   workspaceName: "windows",
-  reactNativeAlias: 'react-native-windows'
+  reactNativeAlias: "react-native-windows",
 });
 
 module.exports = {

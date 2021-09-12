@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 
-// An example demonstrating the usage of native modules. 
+// An example demonstrating the usage of native modules.
 // (Yes, it can be optimzed, but that's not the point of the example :P)
 export function AsyncStorageExample(): JSX.Element {
   const [value, setValue] = useState("     ");
@@ -62,6 +62,6 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     fontSize: 22,
     fontWeight: "600",
-    textAlign: "center"
+    textAlign: "center",
   },
 });

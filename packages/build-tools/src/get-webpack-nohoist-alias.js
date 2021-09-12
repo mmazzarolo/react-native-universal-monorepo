@@ -1,9 +1,9 @@
-const path = require('path');
+const path = require("path");
 const { getNohoistLibraries } = require("./get-nohoist-libraries");
 
-// Get a webpack's "alias" setting compatible with our monorepo nohoist approach 
-// (so that nohoist dependencies are always forcefully resolved from the 
-// project directory). 
+// Get a webpack's "alias" setting compatible with our monorepo nohoist approach
+// (so that nohoist dependencies are always forcefully resolved from the
+// project directory).
 function getWebpackNohoistAlias(dir) {
   const nohoistedPackages = getNohoistLibraries();
   const alias = {};
