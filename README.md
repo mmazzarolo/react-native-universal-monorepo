@@ -1,6 +1,8 @@
 # React Native Universal Monorepo (🚧 WIP)
 
-A React Native monorepo boilerplate supporting multiple platforms: Android, iOS, macOS, Windows, web, browser extension, Electron.
+A React Native monorepo boilerplate supporting multiple platforms: Android, iOS, macOS, Windows, web, browser extension, Electron.  
+
+👉 Check out __[Running React Native everywhere](https://mmazzarolo.com/blog/2021-09-11-running-react-native-everywhere/)__ for an in-depth guide on how and why I recommend trying out this approach if you're planning to support multiple platforms in your app.  
 
 &nbsp;
 
