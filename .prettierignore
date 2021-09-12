@@ -1,0 +1,11 @@
+# Ignore native project files for iOS
+*/mobile/ios
+
+# Ignore native project files for Android
+*/mobile/android
+
+# Ignore native project files for MacOS
+*/macos/macos
+
+# Ignore native project files for Windows
+*/windows/windows
