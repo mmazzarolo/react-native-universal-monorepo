@@ -42,7 +42,8 @@
     "lint": "ultra -r lint",
     "lint:fix": "ultra -r lint:fix",
     "test": "ultra -r test",
-    "typecheck": "ultra -r typecheck"
+    "typecheck": "ultra -r typecheck",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.29.3",
@@ -51,8 +52,14 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react-app": "^6.2.2",
     "eslint-plugin-react-native": "^3.11.0",
+    "husky": ">=6",
+    "lint-staged": ">=10",
     "prettier": "^2.3.2",
     "typescript": "^4.4.2",
     "ultra-runner": "^3.10.5"
+  },
+  "lint-staged": {
+    "*.js,ts,jsx,tsx": "eslint --cache --fix",
+    "*.{js,ts,jsx,tsx,css,md}": "prettier --write"
   }
 }
