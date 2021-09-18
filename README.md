@@ -1,8 +1,15 @@
 # React Native Universal Monorepo (🚧 WIP)
 
-A React Native monorepo boilerplate supporting multiple platforms: Android, iOS, macOS, Windows, web, browser extension, Electron.  
+Using a Yarn Workspaces monorepo to support multiple platforms on React Native: Android, iOS, macOS, Windows, web, browser extension, Electron.  
 
-👉 Check out __[Running React Native everywhere](https://mmazzarolo.com/blog/2021-09-11-running-react-native-everywhere/)__ for an in-depth guide on how and why I recommend trying out this approach if you're planning to support multiple platforms in your app.  
+Check out __[Running React Native everywhere](https://mmazzarolo.com/blog/2021-09-11-running-react-native-everywhere/)__ for an in-depth guide on how and why I recommend trying out this approach if you're planning to support multiple platforms in your app.  
+- [Overview](https://mmazzarolo.com/blog/2021-09-11-running-react-native-everywhere/)
+- [Yarn Workspaces monorepo setup](https://mmazzarolo.com/blog/2021-09-12-running-react-native-everywhere-monorepo/)
+- [Android & iOS](https://mmazzarolo.com/blog/2021-09-18-running-react-native-everywhere-mobile/)
+- Windows & macOS (🚧 WIP)
+- Web (🚧 WIP)
+- Electron (🚧 WIP)
+- Browser extension (🚧 WIP)
 
 &nbsp;
 
@@ -22,7 +29,7 @@ This problem is especially prominent in React Native apps, where both the [metro
 
 A common way to solve this issue in React Native monorepos, is to configure the metro bundler and the native layer to use the project's root `node_modules` directory instead of the package's one.  
 While this approach ensures you gain all the benefits of the hoisting process, it introduces a few complexities:
-- Each time you update React Native (or a library that requires native linking), you must also update (or at least keep in sync) the native code with the root project's `node_modules` directory. To me, this process have always seemed error prone, because you're dealing with multiple languages and build-tools.  
+- Each time you update React Native (or a library that requires native linking), you must also update (or at least keep in sync) the native code with the root project's `node_modules` directory. To me, this process has always seemed error-prone, because you're dealing with multiple languages and build-tools.  
 - Suppose your packages need different versions of React Native (or of a library that requires native linking). In that case, you can't easily ensure it will be installed in a specific location (unless you give up the hoisting mechanism) — adding even more complexities to the table.  
 
 For these reasons, React Native Universal Monorepo uses a different approach, fully embracing [Yarn's `nohoist`](https://classic.yarnpkg.com/blog/2018/02/15/nohoist/).  
@@ -33,7 +40,7 @@ Thanks to nohoist, we can avoid making changes to the native code, and we can ke
 
 Additionally, different platforms can use different versions of React Native (and native libraries), favoring incremental updates instead of migrating the entire project.
 
-> Please notice that I'm not saying that this is the _right_ way to do React Native monorepos. It's just an approach that I enjoy using.  
+> Please notice that I'm not saying this is the _right_ way to do React Native monorepos. It's just an approach that I enjoy using.  
 
 ## Supported platforms
 
@@ -48,15 +55,25 @@ Additionally, different platforms can use different versions of React Native (an
 ## Getting started
 
 1. Clone the repository: `git@github.com:mmazzarolo/react-native-universal-monorepo.git`
-2. Run yarn install `cd react-native-universal-monorepo && yarn`
+2. Run yarn install `cd react-native-universal-monorepo && yarn` 
 
+### How to create this setup from scratch
 
-> 🚧 I'm working on a blog post to explain how to get to this monorepo structure from scratch:  __[Running React Native everywhere](https://mmazzarolo.com/blog/2021-09-11-running-react-native-everywhere/)__
-> It's still a WIP. In the meanwhile, if you're interested, please check the following guides:
-> - [Run your React Native app on the web with React Native for Web
+🚧 I'm working on a blog post to explain how to create this monorepo structure from scratch:  __[Running React Native everywhere](https://mmazzarolo.com/blog/2021-09-11-running-react-native-everywhere/)__
+
+- [Overview](https://mmazzarolo.com/blog/2021-09-11-running-react-native-everywhere/)
+- [Yarn Workspaces monorepo setup](https://mmazzarolo.com/blog/2021-09-12-running-react-native-everywhere-monorepo/)
+- [Android & iOS](https://mmazzarolo.com/blog/2021-09-18-running-react-native-everywhere-mobile/)
+- Windows & macOS (🚧 WIP)
+- Web (🚧 WIP)
+- Electron (🚧 WIP)
+- Browser extension (🚧 WIP)
+
+It's still a WIP. In the meanwhile, if you're interested, please check the following guides:
+- [Run your React Native app on the web with React Native for Web
 ](https://mmazzarolo.com/blog/2020-10-24-adding-react-native-web/)
-> - [Building a desktop application using Electron and Create React App](https://mmazzarolo.com/blog/2021-08-12-building-an-electron-application-using-create-react-app/)
-> - [Developing a browser extension with Create React App](https://mmazzarolo.com/blog/2019-10-19-browser-extension-development/)
+- [Building a desktop application using Electron and Create React App](https://mmazzarolo.com/blog/2021-08-12-building-an-electron-application-using-create-react-app/)
+- [Developing a browser extension with Create React App](https://mmazzarolo.com/blog/2019-10-19-browser-extension-development/)
 
 ## Available commands
 
