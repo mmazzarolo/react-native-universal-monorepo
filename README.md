@@ -6,7 +6,7 @@ Check out __[Running React Native everywhere](https://mmazzarolo.com/blog/2021-0
 - [Overview](https://mmazzarolo.com/blog/2021-09-11-running-react-native-everywhere/)
 - [Yarn Workspaces monorepo setup](https://mmazzarolo.com/blog/2021-09-12-running-react-native-everywhere-monorepo/)
 - [Android & iOS](https://mmazzarolo.com/blog/2021-09-18-running-react-native-everywhere-mobile/)
-- Windows & macOS (🚧 WIP)
+- [Windows & macOS](https://mmazzarolo.com/blog/2021-09-19-running-react-native-everywhere-windows-macos/)
 - Web (🚧 WIP)
 - Electron (🚧 WIP)
 - Browser extension (🚧 WIP)
@@ -64,12 +64,12 @@ Additionally, different platforms can use different versions of React Native (an
 - [Overview](https://mmazzarolo.com/blog/2021-09-11-running-react-native-everywhere/)
 - [Yarn Workspaces monorepo setup](https://mmazzarolo.com/blog/2021-09-12-running-react-native-everywhere-monorepo/)
 - [Android & iOS](https://mmazzarolo.com/blog/2021-09-18-running-react-native-everywhere-mobile/)
-- Windows & macOS (🚧 WIP)
+- [Windows & macOS](https://mmazzarolo.com/blog/2021-09-19-running-react-native-everywhere-windows-macos/)
 - Web (🚧 WIP)
 - Electron (🚧 WIP)
 - Browser extension (🚧 WIP)
 
-It's still a WIP. In the meanwhile, if you're interested, please check the following guides:
+In the meanwhile, if you're interested, please check the following guides:
 - [Run your React Native app on the web with React Native for Web
 ](https://mmazzarolo.com/blog/2020-10-24-adding-react-native-web/)
 - [Building a desktop application using Electron and Create React App](https://mmazzarolo.com/blog/2021-08-12-building-an-electron-application-using-create-react-app/)
