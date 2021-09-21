@@ -8,6 +8,7 @@
     "start": "react-native start",
     "studio": "studio android",
     "xcode": "xed ios",
+    "pods": "pod-install",
     "lint": "eslint .",
     "lint:fix": "yarn lint --fix",
     "test": "jest --passWithNoTests"
