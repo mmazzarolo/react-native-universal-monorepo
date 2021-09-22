@@ -9,12 +9,12 @@ import {
   View,
 } from "react-native";
 import { AsyncStorageExample } from "./AsyncStorageExample";
-import { subPlatform } from "./config";
+import { subplatform } from "./config";
 import LogoSrc from "./logo.png";
 
 export function App(): JSX.Element {
-  const platformValue = subPlatform
-    ? `${Platform.OS} (${subPlatform})`
+  const platformValue = subplatform
+    ? `${Platform.OS} (${subplatform})`
     : Platform.OS;
   return (
     <SafeAreaView style={styles.root}>

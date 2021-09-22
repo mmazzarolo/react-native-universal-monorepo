@@ -1,5 +1,5 @@
 {
-  "name": "@rnup/electron",
+  "name": "@my-app/electron",
   "version": "0.0.0",
   "private": true,
   "author": "John Doe",
@@ -19,8 +19,8 @@
     "lint:fix": "yarn lint --fix"
   },
   "dependencies": {
+    "@my-app/app": "*",
     "@react-native-async-storage/async-storage": "^1.15.7",
-    "@rnup/core": "*",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -39,6 +39,7 @@
     "electron": "^14.0.0",
     "electron-builder": "^22.11.7",
     "electronmon": "^2.0.2",
+    "react-native-monorepo-tools": "^1.1.0",
     "wait-on": "^6.0.0"
   },
   "browserslist": {

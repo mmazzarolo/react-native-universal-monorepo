@@ -1,42 +1,27 @@
-const path = require("path");
-const { getLoader, loaderByName } = require("@craco/craco");
 const webpack = require("webpack");
-const { getWebpackNohoistAlias } = require("@rnup/build-tools/src");
+const { getWebpackTools } = require("react-native-monorepo-tools");
 
-const externalPackages = [path.join(__dirname, "../core")]
+const monorepoWebpackTools = getWebpackTools();
 
 module.exports = {
   webpack: {
-    alias: getWebpackNohoistAlias(__dirname),
+    configure: (webpackConfig) => {
+      // Allow importing from external workspaces.
+      monorepoWebpackTools.enableWorkspacesResolution(webpackConfig);
+      // Ensure nohoisted libraries are resolved from this workspace.
+      monorepoWebpackTools.addNohoistAliases(webpackConfig);
+      return webpackConfig;
+    },
     plugins: [
       // Inject the "__DEV__" global variable.
       new webpack.DefinePlugin({
         __DEV__: process.env.NODE_ENV !== "production",
       }),
-      // Inject the "__SUB_PLATFORM__" global variable. 
-      // It can be used to determine that we're running withing Electron.
+      // Inject the "__SUBPLATFORM__" global variable. 
+      // It can be used to determine whether we're running within Electron or not.
       new webpack.DefinePlugin({
-        __SUB_PLATFORM__: JSON.stringify("electron"),
+        __SUBPLATFORM__: JSON.stringify("electron"),
       }),
     ],
-    configure: (webpackConfig) => {
-      // By default, Create React App doesn't allow pasrsing dependencies 
-      // that live outside of the project root directory. 
-      // Here we patch Create React App's babel-loader settings to allow
-      // loading external packages.
-      const { isFound, match } = getLoader(
-        webpackConfig,
-        loaderByName("babel-loader")
-      );
-      if (isFound) {
-        const include = Array.isArray(match.loader.include)
-          ? match.loader.include
-          : [match.loader.include];
-        for (const externalPackage in externalPackages) {
-          match.loader.include = include.concat[externalPackage];
-        }
-      }
-      return webpackConfig;
-    },
   },
 };

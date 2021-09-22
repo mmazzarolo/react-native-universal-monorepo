@@ -1,5 +1,5 @@
 {
-  "name": "@rnup/macos",
+  "name": "@my-app/macos",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -12,8 +12,8 @@
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
+    "@my-app/app": "*",
     "@react-native-async-storage/async-storage": "^1.15.7",
-    "@rnup/core": "*",
     "react": "16.13.1",
     "react-native": "0.63.0",
     "react-native-macos": "^0.63.0-0"
@@ -24,8 +24,9 @@
     "babel-jest": "^25.1.0",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
-    "react-test-renderer": "16.13.1",
-    "pod-install": "0.1.27"
+    "pod-install": "0.1.27",
+    "react-native-monorepo-tools": "^1.1.0",
+    "react-test-renderer": "16.13.1"
   },
   "jest": {
     "preset": "react-native"

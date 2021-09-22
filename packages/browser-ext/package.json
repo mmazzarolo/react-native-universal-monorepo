@@ -1,5 +1,5 @@
 {
-  "name": "@rnup/browser-ext",
+  "name": "@my-app/browser-ext",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -11,8 +11,8 @@
     "lint:fix": "yarn lint --fix"
   },
   "dependencies": {
+    "@my-app/app": "*",
     "@react-native-async-storage/async-storage": "^1.15.7",
-    "@rnup/core": "*",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
