@@ -1,21 +1,9 @@
-const path = require("path");
 const exclusionList = require("metro-config/src/defaults/exclusionList");
-const getWorkspaces = require("get-yarn-workspaces");
-const {
-  getMetroNohoistSettings,
-  getMetroAndroidAssetsResolutionFix,
-} = require("@rnup/build-tools");
+const { getMetroTools, getMetroAndroidAssetsResolutionFix } = require("react-native-monorepo-tools");
 
-const workspaces = getWorkspaces(__dirname);
+const monorepoMetroTools = getMetroTools();
 
-const androidAssetsResolutionFix = getMetroAndroidAssetsResolutionFix({
-  depth: 3,
-});
-
-const nohoistSettings = getMetroNohoistSettings({
-  dir: __dirname,
-  workspaceName: "mobile",
-});
+const androidAssetsResolutionFix = getMetroAndroidAssetsResolutionFix();
 
 module.exports = {
   transformer: {
@@ -36,13 +24,10 @@ module.exports = {
   },
   // Add additional Yarn workspace package roots to the module map.
   // This allows importing importing from all the project's packages.
-  watchFolders: [
-    path.resolve(__dirname, "../../node_modules"),
-    ...workspaces.filter((workspaceDir) => !(workspaceDir === __dirname)),
-  ],
+  watchFolders: monorepoMetroTools.watchFolders,
   resolver: {
     // Ensure we resolve nohoist libraries from this directory.
-    blockList: exclusionList(nohoistSettings.blockList),
-    extraNodeModules: nohoistSettings.extraNodeModules,
+    blockList: exclusionList(monorepoMetroTools.blockList),
+    extraNodeModules: monorepoMetroTools.extraNodeModules,
   },
 };

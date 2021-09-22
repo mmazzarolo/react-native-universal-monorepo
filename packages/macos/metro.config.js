@@ -1,14 +1,9 @@
-const path = require("path");
 const exclusionList = require("metro-config/src/defaults/exclusionList");
-const getWorkspaces = require("get-yarn-workspaces");
-const { getMetroNohoistSettings } = require("@rnup/build-tools/src");
+const { getMetroTools } = require("react-native-monorepo-tools");
 
-const workspaces = getWorkspaces(__dirname);
-
-const nohoistSettings = getMetroNohoistSettings({
-  dir: __dirname,
-  workspaceName: "macos",
-  reactNativeAlias: 'react-native-macos'
+// Get the metro settings to make it compatible with Yarn workspaces.
+const monorepoMetroTools = getMetroTools({
+  reactNativeAlias: "react-native-macos",
 });
 
 module.exports = {
@@ -21,14 +16,11 @@ module.exports = {
     }),
   },
   // Add additional Yarn workspace package roots to the module map.
-  // This allows importing importing from all the project's packages.
-  watchFolders: [
-    path.resolve(__dirname, "../../node_modules"),
-    ...workspaces.filter((workspaceDir) => !(workspaceDir === __dirname)),
-  ],
+  // This allows importing from any workspace.
+  watchFolders: monorepoMetroTools.watchFolders,
   resolver: {
     // Ensure we resolve nohoist libraries from this directory.
-    blacklistRE: exclusionList(nohoistSettings.blockList),
-    extraNodeModules: nohoistSettings.extraNodeModules,
+    blacklistRE: exclusionList(monorepoMetroTools.blockList),
+    extraNodeModules: monorepoMetroTools.extraNodeModules,
   },
 };

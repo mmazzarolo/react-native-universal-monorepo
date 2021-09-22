@@ -1,5 +1,5 @@
 {
-  "name": "@rnup/core",
+  "name": "@my-app/app",
   "version": "0.0.0",
   "private": true,
   "main": "src",
