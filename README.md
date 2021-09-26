@@ -7,9 +7,8 @@ Check out __[Running React Native everywhere](https://mmazzarolo.com/blog/2021-0
 - [Yarn Workspaces monorepo setup](https://mmazzarolo.com/blog/2021-09-12-running-react-native-everywhere-monorepo/)
 - [Android & iOS](https://mmazzarolo.com/blog/2021-09-18-running-react-native-everywhere-mobile/)
 - [Windows & macOS](https://mmazzarolo.com/blog/2021-09-19-running-react-native-everywhere-windows-macos/)
-- [Web](https://mmazzarolo.com/blog/2021-09-22-running-react-native-everywhere-web/)
-- Electron (🚧 WIP)
-- Browser extension (🚧 WIP)
+- [The Web](https://mmazzarolo.com/blog/2021-09-22-running-react-native-everywhere-web/)
+- [Browser Extensions & Electron](https://mmazzarolo.com/blog/2021-09-25-running-react-native-everywhere-electron-browser-ext/)
 
 &nbsp;
 
@@ -65,9 +64,8 @@ Additionally, different platforms can use different versions of React Native (an
 - [Yarn Workspaces monorepo setup](https://mmazzarolo.com/blog/2021-09-12-running-react-native-everywhere-monorepo/)
 - [Android & iOS](https://mmazzarolo.com/blog/2021-09-18-running-react-native-everywhere-mobile/)
 - [Windows & macOS](https://mmazzarolo.com/blog/2021-09-19-running-react-native-everywhere-windows-macos/)
-- [Web](https://mmazzarolo.com/blog/2021-09-22-running-react-native-everywhere-web/)
-- Electron (🚧 WIP)
-- Browser extension (🚧 WIP)
+- [The Web](https://mmazzarolo.com/blog/2021-09-22-running-react-native-everywhere-web/)
+- [Browser Extensions & Electron](https://mmazzarolo.com/blog/2021-09-25-running-react-native-everywhere-electron-browser-ext/)
 
 In the meanwhile, if you're interested, please check the following guides:
 - [Run your React Native app on the web with React Native for Web
