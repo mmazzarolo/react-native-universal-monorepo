@@ -14,6 +14,7 @@ Check out __[Running React Native everywhere](https://mmazzarolo.com/blog/2021-0
 
 <p align="center" margin-bottom="0">
   <img width="820" height="auto" src="./.github/images/all-screenshot.png">
+  <img width="820" height="auto" src="./.github/images/tv.png">
 </p>
 
 ## Overview

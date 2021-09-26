@@ -1,0 +1,48 @@
+{
+  "name": "@my-app/tv",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "android": "emulator -avd Android_TV; react-native run-android",
+    "ios": "react-native run-ios --simulator 'Apple TV' --scheme 'tv-tvOS'",
+    "studio": "studio android",
+    "xcode": "xed ios",
+    "pods": "pod-install",
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "dependencies": {
+    "@my-app/app": "*",
+    "@react-native-async-storage/async-storage": "^1.15.7",
+    "react": "17.0.1",
+    "react-native": "npm:react-native-tvos@0.64.2-2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/runtime": "^7.12.5",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@types/jest": "^26.0.24",
+    "@types/react-native": "^0.64.2",
+    "@types/react-test-renderer": "^17.0.1",
+    "babel-jest": "^26.6.3",
+    "eslint": "7.14.0",
+    "jest": "^26.6.3",
+    "metro-react-native-babel-preset": "^0.64.0",
+    "pod-install": "^0.1.27",
+    "react-native-monorepo-tools": "^1.1.0",
+    "react-test-renderer": "17.0.1",
+    "typescript": "^3.8.3"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}
