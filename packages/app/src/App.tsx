@@ -13,7 +13,10 @@ import { subplatform } from "./config";
 import LogoSrc from "./logo.png";
 
 // Import types for TV platform
-import '../../tv/node_modules/react-native/tvos-types.d';
+// The eval is required to avoid static analysis errors on other platforms
+if(Platform.isTV) {
+  eval("require('../../tv/node_modules/react-native/tvos-types.d');");
+}
 
 export function App(): JSX.Element {
   let platformValue;
