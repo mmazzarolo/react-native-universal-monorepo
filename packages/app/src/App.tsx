@@ -12,11 +12,13 @@ import { AsyncStorageExample } from "./AsyncStorageExample";
 import { subplatform } from "./config";
 import LogoSrc from "./logo.png";
 
-// Import types for TV platform
-// The eval is required to avoid static analysis errors on other platforms
-if(Platform.isTV) {
-  eval("require('../../tv/node_modules/react-native/tvos-types.d');");
-}
+// Conditionally import the TV specific react-native types
+// Note: the eval is necessary to avoid static analysis errors
+(async () => {
+  if (Platform.isTV) {
+    eval("import('../../tv/node_modules/react-native/tvos-types.d');");
+  }
+})();
 
 export function App(): JSX.Element {
   let platformValue;
