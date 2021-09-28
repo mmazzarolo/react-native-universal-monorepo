@@ -1,7 +1,15 @@
-import { Children } from 'react';
-import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
+import * as React from 'react'
+import { Children } from 'react'
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext
+} from 'next/document';
 import { AppRegistry } from 'react-native';
-import config from '../app.json';
+
+import appName from '../app.json';
 
 // Force Next-generated DOM elements to fill their parent's height
 const normalizeNextElements = `
@@ -10,23 +18,32 @@ const normalizeNextElements = `
     flex-direction: column;
     height: 100%;
   }
+  html {
+    height: 100%;
+  }
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
 `;
 
 export default class MyDocument extends Document {
   static async getInitialProps({ renderPage }: DocumentContext) {
-    AppRegistry.registerComponent(config.name, () => Main)
-    const page = await renderPage()
+    AppRegistry.registerComponent(appName.name, () => Main);
+    const { getStyleElement } = AppRegistry.getApplication(appName.name);
+    const page = await renderPage();
     const styles = [
-      <style key='style' dangerouslySetInnerHTML={{ __html: normalizeNextElements }} />,
-    ]
-    return { ...page, styles: Children.toArray(styles) }
+      <style key='normalizeNextElements' dangerouslySetInnerHTML={{ __html: normalizeNextElements }} />,
+      getStyleElement(),
+    ];
+    return { ...page, styles: Children.toArray(styles) };
   }
 
   render() {
     return (
-      <Html style={{ height: '100%' }}>
+      <Html>
         <Head />
-        <body style={{ height: '100%', overflow: 'hidden' }}>
+        <body>
           <Main />
           <NextScript />
         </body>
