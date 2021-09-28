@@ -1,6 +1,6 @@
 # React Native Universal Monorepo (🚧 WIP)
 
-Using a Yarn Workspaces monorepo to support multiple platforms on React Native: Android, iOS, macOS, Windows, web, browser extension, Electron.  
+An opinonated approach to supporting multiple platforms with React Native using a Yarn Workspaces monorepo.  
 
 Check out __[Running React Native everywhere](https://mmazzarolo.com/blog/2021-09-11-running-react-native-everywhere/)__ for an in-depth guide on how and why I recommend trying out this approach if you're planning to support multiple platforms in your app.  
 - [Overview](https://mmazzarolo.com/blog/2021-09-11-running-react-native-everywhere/)
@@ -20,45 +20,40 @@ Check out __[Running React Native everywhere](https://mmazzarolo.com/blog/2021-0
 
 This monorepo uses [Yarn workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) and [TypeScript](https://www.typescriptlang.org/) to support a modular React Native project.  
 
-To reduce redundancy, most package managers employ some kind of hoisting scheme to extract and flatten all dependent modules, as much as possible, into a centralized location.  
-Yarn workspaces store the flattened dependencies in a `node_modules` directory in the project root and makes it accessible to the workspace packages by symlinking the libraries in the packages' `node_module` directory. 
+The core idea is to isolate the JavaScript app code from the platform configurations (native code + the app bundlers like Metro and Webpack).  
+This isolation happens by using different [workspaces](https://classic.yarnpkg.com/en/docs/workspaces/): We have an `app` workspace for the JavaScript app code, a `mobile` workspace for the React Native mobile configuration, a `macos` workspace for the React Native macOS configuration, and so on.  
 
-While it might appear that we can access all modules from the project’s root `node_modules`, the reality is that build processes sometimes aren't able to traverse symlinks.  
-This problem is especially prominent in React Native apps, where both the [metro bundler](https://github.com/facebook/metro/issues/1) and the native code can't follow symlinks.  
+We fully embrace [Yarn `nohoist`](https://classic.yarnpkg.com/blog/2018/02/15/nohoist/) to allow using different versions of React Native on each platform (which is recommended but not required), simplifying the adoption of new React Native updates.  
+Thanks nohoist, each platform workspace (`mobile`, `macos`, etc.) can depend on any React Native version, regardless of what version the other platform workspaces are using. 
+For example, we can use `react-native@0.65` on the mobile app and `react-native@0.63` on the macOS app — as long as the JavaScript app code supports both versions.  
+This approach promotes gradual React Native updates over updates in lockstep.  
 
-A common way to solve this issue in React Native monorepos, is to configure the metro bundler and the native layer to use the project's root `node_modules` directory instead of the package's one.  
-While this approach ensures you gain all the benefits of the hoisting process, it introduces a few complexities:
-- Each time you update React Native (or a library that requires native linking), you must also update (or at least keep in sync) the native code with the root project's `node_modules` directory. To me, this process has always seemed error-prone, because you're dealing with multiple languages and build-tools.  
-- Suppose your packages need different versions of React Native (or of a library that requires native linking). In that case, you can't easily ensure it will be installed in a specific location (unless you give up the hoisting mechanism) — adding even more complexities to the table.  
+For more details, check out ["Running React Native everywhere: Yarn Workspaces monorepo setup"](https://mmazzarolo.com/blog/2021-09-12-running-react-native-everywhere-monorepo/).  
 
-For these reasons, React Native Universal Monorepo uses a different approach, fully embracing [Yarn's `nohoist`](https://classic.yarnpkg.com/blog/2018/02/15/nohoist/).  
-
-Of course, this comes with drawbacks. The most obvious one is that nohoist modules could be duplicated in multiple locations, denying the benefit of hoisting mentioned above. Therefore, we'll keep `nohoist` scope as small and explicit as possible, targeting only problematic libraries.  
-
-Thanks to nohoist, we can avoid making changes to the native code, and we can keep the monorepo configuration in the JavaScript land. This means we can even [extract common metro and webpack settings in a workspace package](https://github.com/mmazzarolo/react-native-universal-monorepo/tree/master/packages/build-tools/src) to share them easily across the entire project.  
-
-Additionally, different platforms can use different versions of React Native (and native libraries), favoring incremental updates instead of migrating the entire project.
-
-> Please notice that I'm not saying this is the _right_ way to do React Native monorepos. It's just an approach that I enjoy using.  
+> ⚠️ Please notice that I'm not saying this is the _right_ way to do React Native monorepos. This is just an approach that I enjoy using on larger codebases :)
 
 ## Supported platforms
 
-- Android (React-Native 0.65)
-- iOS (React-Native 0.65)
-- Windows (React-Native 0.65)
-- MacOS (React-Native 0.63)
-- Web (React-Native 0.65)
-- Web - Browser Extension (React-Native 0.65)
-- Web - Electron (React-Native 0.65)
+- Android (React Native 0.65)
+- iOS (React Native 0.65)
+- Windows (React Native 0.65)
+- MacOS (React Native 0.63)
+- Web (React Native 0.65)
+- Web - Browser Extension (React Native 0.65)
+- Web - Electron (React Native 0.65)
 
 ## Getting started
+
+You can use this repo as a boilerplate, removing the workspaces of platforms that you don't need, or you can create this setup from scratch if you want to fully understand how it works. 
+
+### Using this repository as a boilerplate
 
 1. Clone the repository: `git@github.com:mmazzarolo/react-native-universal-monorepo.git`
 2. Run yarn install `cd react-native-universal-monorepo && yarn` 
 
-### How to create this setup from scratch
+### Create this setup from scratch
 
-🚧 I'm working on a blog post to explain how to create this monorepo structure from scratch:  __[Running React Native everywhere](https://mmazzarolo.com/blog/2021-09-11-running-react-native-everywhere/)__
+Step by step tutorial on creating this repository from scratch: 
 
 - [Overview](https://mmazzarolo.com/blog/2021-09-11-running-react-native-everywhere/)
 - [Yarn Workspaces monorepo setup](https://mmazzarolo.com/blog/2021-09-12-running-react-native-everywhere-monorepo/)
@@ -67,7 +62,7 @@ Additionally, different platforms can use different versions of React Native (an
 - [The Web](https://mmazzarolo.com/blog/2021-09-22-running-react-native-everywhere-web/)
 - [Browser Extensions & Electron](https://mmazzarolo.com/blog/2021-09-25-running-react-native-everywhere-electron-browser-ext/)
 
-In the meanwhile, if you're interested, please check the following guides:
+Additional resources:  
 - [Run your React Native app on the web with React Native for Web
 ](https://mmazzarolo.com/blog/2020-10-24-adding-react-native-web/)
 - [Building a desktop application using Electron and Create React App](https://mmazzarolo.com/blog/2021-08-12-building-an-electron-application-using-create-react-app/)
