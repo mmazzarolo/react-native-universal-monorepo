@@ -1,8 +1,5 @@
 import { Platform } from 'react-native';
 
-// Import TV specific types
-import '../../tv/node_modules/react-native/tvos-types.d';
-
 // eslint-disable-next-line
 declare var __SUBPLATFORM__: "electron" | "browser-ext" | "android-tv" | "tvos" | undefined;
 
