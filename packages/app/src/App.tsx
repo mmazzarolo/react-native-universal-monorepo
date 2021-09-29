@@ -13,13 +13,9 @@ import { subplatform } from "./config";
 import LogoSrc from "./logo.png";
 
 export function App(): JSX.Element {
-  let platformValue;
-  if (Platform.isTV) {
-    platformValue = Platform.OS === 'ios' ? 'tvos' : 'android tv';
-  } else {
-    platformValue = subplatform ? `${Platform.OS} (${subplatform})` : Platform.OS;
-  }
-  
+  const platformValue = subplatform
+    ? `${Platform.OS} (${subplatform})`
+    : Platform.OS;
   return (
     <SafeAreaView style={styles.root}>
       {/* On React Native for Web builds coming from CRA, TypeScript 
