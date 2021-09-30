@@ -12,22 +12,10 @@ import { AsyncStorageExample } from "./AsyncStorageExample";
 import { subplatform } from "./config";
 import LogoSrc from "./logo.png";
 
-// Conditionally import the TV specific react-native types
-// Note: the eval is necessary to avoid static analysis errors
-(async () => {
-  if (Platform.isTV) {
-    eval("import('../../tv/node_modules/react-native/tvos-types.d');");
-  }
-})();
-
 export function App(): JSX.Element {
-  let platformValue;
-  if (Platform.isTV) {
-    platformValue = Platform.OS === 'ios' ? 'tvos' : 'android tv';
-  } else {
-    platformValue = subplatform ? `${Platform.OS} (${subplatform})` : Platform.OS;
-  }
-  
+  const platformValue = subplatform
+    ? `${Platform.OS} (${subplatform})`
+    : Platform.OS;
   return (
     <SafeAreaView style={styles.root}>
       {/* On React Native for Web builds coming from CRA, TypeScript 
