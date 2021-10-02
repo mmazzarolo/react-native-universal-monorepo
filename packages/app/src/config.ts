@@ -1,7 +1,7 @@
 import { Platform } from 'react-native';
 
 // eslint-disable-next-line
-declare var __SUBPLATFORM__: "electron" | "browser-ext" | "android-tv" | "tvos" | undefined;
+declare var __SUBPLATFORM__: "electron" | "browser-ext" | "android-tv" | "tvos" | "next" | undefined;
 
 export const isDev = __DEV__;
 

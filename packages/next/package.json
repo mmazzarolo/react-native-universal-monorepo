@@ -1,0 +1,30 @@
+{
+  "name": "@my-app/next",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@my-app/app": "*",
+    "@react-native-async-storage/async-storage": "^1.15.8",
+    "next": "11.1.2",
+    "next-fonts": "^1.5.1",
+    "next-images": "^1.8.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-native": "0.65.1",
+    "react-native-web": "^0.17.1",
+    "setimmediate": "^1.0.5"
+  },
+  "devDependencies": {
+    "@types/react": "17.0.24",
+    "@types/react-native": "^0.65.2",
+    "babel-plugin-react-native-web": "^0.17.1",
+    "babel-plugin-transform-define": "^2.0.1",
+    "typescript": "^4.4.3"
+  }
+}
