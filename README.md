@@ -41,6 +41,9 @@ For more details, check out ["Running React Native everywhere: Yarn Workspaces m
 - Web (React Native 0.65)
 - Web - Browser Extension (React Native 0.65)
 - Web - Electron (React Native 0.65)
+- Web - Next.js (React Native 0.65)
+- Andtoid TV (React Native 0.65)
+- tvOS (React Native 0.65)
 
 ## Getting started
 
@@ -62,6 +65,10 @@ Step by step tutorial on creating this repository from scratch:
 - [The Web](https://mmazzarolo.com/blog/2021-09-22-running-react-native-everywhere-web/)
 - [Browser Extensions & Electron](https://mmazzarolo.com/blog/2021-09-25-running-react-native-everywhere-electron-browser-ext/)
 
+Tutorial for the TV and Next.js platforms from [@thefinnomenon](https://github.com/thefinnomenon):  
+- [Adding tvOS & Android TV Support to Monorepo](https://finnternet.com/dev/blog/react-native-tv-monorepo)
+- [Next.js in React-Native Monorepo](https://finnternet.com/dev/blog/nextjs-monorepo)
+
 Additional resources:  
 - [Run your React Native app on the web with React Native for Web
 ](https://mmazzarolo.com/blog/2020-10-24-adding-react-native-web/)
@@ -72,10 +79,10 @@ Additional resources:
 
 Development and build commands:
 
-- `yarn android:metro`: Start the metro server for android/iOS
-- `yarn android:start`: Start developing the android app
-- `yarn android:studio`: Open the android app on android Studio
-- `yarn ios:metro`: Start the metro server for android/iOS
+- `yarn android:metro`: Start the metro server for Android/iOS
+- `yarn android:start`: Start developing the Android app
+- `yarn android:studio`: Open the android app on Android Studio
+- `yarn ios:metro`: Start the metro server for Android/iOS
 - `yarn ios:start`: Start developing the iOS app
 - `yarn ios:pods`: Install iOS cocoapods dependencies
 - `yarn ios:xcode`: Open the iOS app on XCode
@@ -85,14 +92,24 @@ Development and build commands:
 - `yarn macos:xcode`: Open the macOS app on XCode
 - `yarn web:start`: Start developing the web app
 - `yarn web:build`: Create a production build of the web app
-- `yarn electron:start`: Start developing the electron app
-- `yarn electron:package:mac`: Package the production binary of the electron app for macOS
-- `yarn electron:package:win`: Package the production binary of the electron app for windows
-- `yarn electron:package:linux`: Package the production binary of the electron app for linux
+- `yarn electron:start`: Start developing the Electron app
+- `yarn electron:package:mac`: Package the production binary of the Electron app for macOS
+- `yarn electron:package:win`: Package the production binary of the Electron app for windows
+- `yarn electron:package:linux`: Package the production binary of the Electron app for linux
 - `yarn browser-ext:start`: Start developing the browser extension
 - `yarn browser-ext:build`: Create a production build of the browser extension
-- `yarn windows:metro`: Start the metro server for windows
-- `yarn windows:start`: Start developing the windows app
+- `yarn windows:metro`: Start the metro server for Windows
+- `yarn windows:start`: Start developing the Windows app
+- `yarn tv:android:metro`: Start the metro server for Android TV
+- `yarn tv:android:start`: Start developing the Android TV app
+- `yarn tv:android:studio`: Open the Android TV app in Android Studio
+- `yarn tv:tvos:metro`: Start the metro server for tvOS
+- `yarn tv:tvos:start`: Start developing the tvOS app
+- `yarn tv:tvos:xcode`: Open the tvOS app in XCode
+- `yarn tv:tvos:pods`: Install tvOS cocoapods dependencies
+- `yarn next:start`: Start the Next.js app
+- `yarn next:build`: Build the Next.js app
+- `yarn next:serve`: Serve the Next.js app build
 
 Other commands (we use [ultra-runner](https://github.com/folke/ultra-runner) to run these commands on all workspaces): 
 
