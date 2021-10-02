@@ -38,12 +38,12 @@ For more details, check out ["Running React Native everywhere: Yarn Workspaces m
 - iOS (React Native 0.65)
 - Windows (React Native 0.65)
 - MacOS (React Native 0.63)
+- Android TV (React Native 0.65)
+- tvOS (React Native 0.65)
 - Web (React Native 0.65)
 - Web - Browser Extension (React Native 0.65)
 - Web - Electron (React Native 0.65)
 - Web - Next.js (React Native 0.65)
-- Andtoid TV (React Native 0.65)
-- tvOS (React Native 0.65)
 
 ## Getting started
 
