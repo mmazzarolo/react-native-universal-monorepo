@@ -1,4 +1,4 @@
-# React Native Universal Monorepo (🚧 WIP)
+# React Native Universal Monorepo
 
 An opinonated approach to supporting multiple platforms with React Native using a Yarn Workspaces monorepo.  
 
