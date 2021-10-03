@@ -128,7 +128,7 @@ To fix these issues, [we mark them as nohoist](https://classic.yarnpkg.com/blog/
 
 In this monorepo, you can see an example of such libraries in `react-native-async-storage`.  
 
-In the metro bundler and Webpack configs used across the monorepo, [I'm using a set of build-tools](https://github.com/mmazzarolo/react-native-universal-monorepo/tree/master/packages/build-tools) that ensures nohoisted packages are resolved correctly.  
+In the metro bundler and Webpack configs used across the monorepo, [we're using a set of build-tools](https://github.com/mmazzarolo/react-native-monorepo-tools/) to ensure nohoisted packages are resolved correctly.  
 So, as long as you add these libraries [to the `nohoist` list](https://github.com/mmazzarolo/react-native-universal-monorepo/blob/a7dcfcbe7c7df66f6d11f06dd13f51ff94b1e70c/package.json#L9-L19), you should be good to go 👍  
 
 ## Contributing
