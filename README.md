@@ -131,6 +131,16 @@ In this monorepo, you can see an example of such libraries in `react-native-asyn
 In the metro bundler and Webpack configs used across the monorepo, [we're using a set of build-tools](https://github.com/mmazzarolo/react-native-monorepo-tools/) to ensure nohoisted packages are resolved correctly.  
 So, as long as you add these libraries [to the `nohoist` list](https://github.com/mmazzarolo/react-native-universal-monorepo/blob/a7dcfcbe7c7df66f6d11f06dd13f51ff94b1e70c/package.json#L9-L19), you should be good to go 👍  
 
+## Yarn Classic vs Yarn 2+
+
+We're striving to make this setup compatible with Yarn Classic — but, [with a few tweaks](https://yarnpkg.com/getting-started/migration), it's compatible with Yarn 2+ as well (providing all Yarn 2+ benefits).  
+See [#22](https://github.com/mmazzarolo/react-native-universal-monorepo/issues/22) for more info. 
+
+## Known issues
+
+In some cases, Yarn Classic won't be able to resolve correctly dependencies that have a `peerDependency` on `react-native`.  
+See [#22](https://github.com/mmazzarolo/react-native-universal-monorepo/issues/22) for a few workarounds. A fix on the `react-native-monorepo-tools` repo is on the work. 
+
 ## Contributing
 
 Contributions, discussions, and feedback are welcome! Please keep in mind that this project is still a WIP, so I suggest asking if there are any active plans on feature changes before submitting new PR 👍
