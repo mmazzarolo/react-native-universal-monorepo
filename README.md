@@ -136,6 +136,24 @@ So, as long as you add these libraries [to the `nohoist` list](https://github.co
 We're striving to make this setup compatible with Yarn Classic — but, [with a few tweaks](https://yarnpkg.com/getting-started/migration), it's compatible with Yarn 2+ as well (providing all Yarn 2+ benefits).  
 See [#22](https://github.com/mmazzarolo/react-native-universal-monorepo/issues/22) for more info. 
 
+## Setting up Yarn 2+
+
+- Start Setting up yarn 2 by running this command `yarn set version berry`
+
+This will create `.yarnrc.yml`
+
+Add the following lines of code to the file
+
+```yml
+nodeLinker: node-modules
+nmHoistingLimits: workspaces
+```
+
+- nodeLinker has multiple options like `pnp` and `pnpm`, but let's stick to basic `node_modules`
+- nmHositingLimits tells how to hoist dependencies for each package/workspace. let's choose workspace so all the necessary dependencies that's needed for an app will stay under it, rather than installing it on the root folder. Now you can delete the noHoist in package.json
+
+That's it
+
 ## Known issues
 
 In some cases, Yarn Classic won't be able to resolve correctly dependencies that have a `peerDependency` on `react-native`.  
