@@ -138,21 +138,16 @@ See [#22](https://github.com/mmazzarolo/react-native-universal-monorepo/issues/2
 
 ## Setting up Yarn 2+
 
-- Start Setting up yarn 2 by running this command `yarn set version berry`
-
-This will create `.yarnrc.yml`
-
-Add the following lines of code to the file
-
+1. Run `yarn set version berry` at the root of project. It will create a `.yarnrc.yml` file. 
+2. Add the following lines to `.yarnrc.yml` to ensure `node_modules` directories are all created in each workspace:
 ```yml
 nodeLinker: node-modules
 nmHoistingLimits: workspaces
 ```
+3. `nmHositingLimits` tells how to hoist dependencies for each workspace. By setting it to `workspaces` all dependencies will be installed in each workspace's `node_modules` rather than being hoisted to the root folder. This means you can now you can safely the `noHoist` section in the root's `package.json`. 
 
-- nodeLinker has multiple options like `pnp` and `pnpm`, but let's stick to basic `node_modules`
-- nmHositingLimits tells how to hoist dependencies for each package/workspace. let's choose workspace so all the necessary dependencies that's needed for an app will stay under it, rather than installing it on the root folder. Now you can delete the noHoist in package.json
+Check out [Yarn 2+'s "getting started" guide](https://yarnpkg.com/getting-started/install) for more info.  
 
-That's it
 
 ## Known issues
 
