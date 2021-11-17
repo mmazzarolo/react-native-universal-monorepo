@@ -25,6 +25,7 @@
     "android:studio": "yarn workspace @my-app/mobile studio",
     "ios:metro": "yarn workspace @my-app/mobile start",
     "ios:start": "yarn workspace @my-app/mobile ios",
+    "ipad:start": "yarn workspace @my-app/mobile ipad",
     "ios:xcode": "yarn workspace @my-app/mobile xcode",
     "ios:pods": "yarn workspace @my-app/mobile pods",
     "tv:android:metro": "yarn workspace @my-app/tv start",
