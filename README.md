@@ -156,4 +156,4 @@ See [#22](https://github.com/mmazzarolo/react-native-universal-monorepo/issues/2
 
 ## Contributing
 
-Contributions, discussions, and feedback are welcome! Please keep in mind that this project is still a WIP, so I suggest asking if there are any active plans on feature changes before submitting new PR 👍
+Contributions, discussions, and feedback are welcome! Please ask if there are any active plans on feature changes before submitting new PRs 👍
