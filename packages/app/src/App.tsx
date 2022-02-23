@@ -21,7 +21,7 @@ export function App(): JSX.Element {
       {/* On React Native for Web builds coming from CRA, TypeScript 
           complains about the image type, so we cast it as a workaround  */}
       <Image style={styles.logo} source={LogoSrc as ImageSourcePropType} />
-      <Text style={styles.text}>Hello from React Native!</Text>
+      <Text style={styles.text}>Hello from Saeed!</Text>
       <View style={styles.platformRow}>
         <Text style={styles.text}>Platform: </Text>
         <View style={styles.platformBackground}>
