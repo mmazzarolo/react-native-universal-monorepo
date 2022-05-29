@@ -8,7 +8,7 @@
   "homepage": "./",
   "scripts": {
     "cra:start": "craco start",
-    "cra:build": "craco build",
+    "build": "craco build",
     "start": "concurrently -k \"cross-env BROWSER=none yarn cra:start\" \"wait-on http://localhost:3000 && electronmon .\"",
     "package:mac": "yarn build && electron-builder -m -c.extraMetadata.main=build/electron.js",
     "package:win": "yarn build && electron-builder -w -c.extraMetadata.main=build/electron.js",
@@ -36,7 +36,7 @@
     "@types/react-dom": "^17.0.9",
     "concurrently": "^6.2.1",
     "cross-env": "^7.0.3",
-    "electron": "^14.0.0",
+    "electron": "14.0.0",
     "electron-builder": "^22.11.7",
     "electronmon": "^2.0.2",
     "react-native-monorepo-tools": "^1.1.0",
