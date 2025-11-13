@@ -5,7 +5,7 @@
     {
       "files": "**/*.+(ts|tsx)",
       "parser": "@typescript-eslint/parser",
-      "plugins": ["@typescript-eslint", "react-native"],
+      "plugins": ["@typescript-eslint"],
       "extends": [
         "plugin:react/recommended",
         "prettier",
