@@ -6,6 +6,11 @@
 .next
 .vscode
 node_modules
+
+# Turborepo
+.turbo
+**/.turbo
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

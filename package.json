@@ -2,6 +2,7 @@
   "name": "react-native-universal-project",
   "version": "0.0.1",
   "private": true,
+  "packageManager": "yarn@1.22.22",
   "workspaces": {
     "packages": [
       "packages/*"
@@ -47,10 +48,13 @@
     "browser-ext:build": "yarn workspace @my-app/browser-ext build",
     "windows:metro": "yarn workspace @my-app/windows start",
     "windows:start": "yarn workspace @my-app/windows windows",
-    "lint": "ultra -r lint",
-    "lint:fix": "ultra -r lint:fix",
-    "test": "ultra -r test",
-    "typecheck": "ultra -r typecheck"
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean",
+    "dev": "turbo run dev --parallel"
   },
   "devDependencies": {
     "@eslint/js": "^9.16.0",
@@ -60,6 +64,7 @@
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-native": "^4.1.0",
     "prettier": "^3.4.2",
+    "turbo": "^2.3.3",
     "typescript": "^5.9.0",
     "typescript-eslint": "^8.17.0",
     "ultra-runner": "^3.10.5"
