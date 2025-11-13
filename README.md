@@ -2,13 +2,13 @@
 
 An opinonated approach to supporting multiple platforms with React Native using a Yarn Workspaces monorepo.  
 
-Check out __[Running React Native everywhere](https://mmazzarolo.com/blog/2021-09-11-running-react-native-everywhere/)__ for an in-depth guide on how and why I recommend trying out this approach if you're planning to support multiple platforms in your app.  
+Check out __[Running React Native everywhere](https://mmazzarolo.com/blog/2021-09-11-running-react-native-everywhere/)__ for an in-depth guide on how and why I recommend trying out this approach if you're planning to support multiple platforms in your app.
 - [Overview](https://mmazzarolo.com/blog/2021-09-11-running-react-native-everywhere/)
 - [Yarn Workspaces monorepo setup](https://mmazzarolo.com/blog/2021-09-12-running-react-native-everywhere-monorepo/)
 - [Android & iOS](https://mmazzarolo.com/blog/2021-09-18-running-react-native-everywhere-mobile/)
 - [Windows & macOS](https://mmazzarolo.com/blog/2021-09-19-running-react-native-everywhere-windows-macos/)
 - [The Web](https://mmazzarolo.com/blog/2021-09-22-running-react-native-everywhere-web/)
-- [Browser Extensions & Electron](https://mmazzarolo.com/blog/2021-09-25-running-react-native-everywhere-electron-browser-ext/)
+- [Browser Extensions](https://mmazzarolo.com/blog/2021-09-25-running-react-native-everywhere-electron-browser-ext/)
 
 &nbsp;
 
@@ -34,16 +34,16 @@ For more details, check out ["Running React Native everywhere: Yarn Workspaces m
 
 ## Supported platforms
 
-- Android (React Native 0.65)
-- iOS (React Native 0.65)
-- Windows (React Native 0.65)
-- MacOS (React Native 0.63)
-- Android TV (React Native 0.65)
-- tvOS (React Native 0.65)
-- Web (React Native 0.65)
-- Web - Browser Extension (React Native 0.65)
-- Web - Electron (React Native 0.65)
-- Web - Next.js (React Native 0.65)
+- Android (React Native 0.78)
+- iOS (React Native 0.78)
+- Windows (React Native 0.78)
+- macOS (React Native 0.78)
+- Android TV (React Native 0.78)
+- tvOS (React Native 0.78)
+- Web (React Native 0.78)
+- Web - Browser Extension (React Native 0.78)
+- Web - Next.js (React Native 0.78)
+- Desktop - Tauri 2.0
 
 ## Getting started
 
@@ -56,24 +56,23 @@ You can use this repo as a boilerplate, removing the workspaces of platforms tha
 
 ### Create this setup from scratch
 
-Step by step tutorial on creating this repository from scratch: 
+Step by step tutorial on creating this repository from scratch:
 
 - [Overview](https://mmazzarolo.com/blog/2021-09-11-running-react-native-everywhere/)
 - [Yarn Workspaces monorepo setup](https://mmazzarolo.com/blog/2021-09-12-running-react-native-everywhere-monorepo/)
 - [Android & iOS](https://mmazzarolo.com/blog/2021-09-18-running-react-native-everywhere-mobile/)
 - [Windows & macOS](https://mmazzarolo.com/blog/2021-09-19-running-react-native-everywhere-windows-macos/)
 - [The Web](https://mmazzarolo.com/blog/2021-09-22-running-react-native-everywhere-web/)
-- [Browser Extensions & Electron](https://mmazzarolo.com/blog/2021-09-25-running-react-native-everywhere-electron-browser-ext/)
+- [Browser Extensions](https://mmazzarolo.com/blog/2021-09-25-running-react-native-everywhere-electron-browser-ext/)
 
 Tutorial for the TV and Next.js platforms from [@thefinnomenon](https://github.com/thefinnomenon):  
 - [Adding tvOS & Android TV Support to Monorepo](https://finnternet.com/dev/blog/react-native-tv-monorepo)
 - [Next.js in React-Native Monorepo](https://finnternet.com/dev/blog/nextjs-monorepo)
 
-Additional resources:  
-- [Run your React Native app on the web with React Native for Web
-](https://mmazzarolo.com/blog/2020-10-24-adding-react-native-web/)
-- [Building a desktop application using Electron and Create React App](https://mmazzarolo.com/blog/2021-08-12-building-an-electron-application-using-create-react-app/)
+Additional resources:
+- [Run your React Native app on the web with React Native for Web](https://mmazzarolo.com/blog/2020-10-24-adding-react-native-web/)
 - [Developing a browser extension with Create React App](https://mmazzarolo.com/blog/2019-10-19-browser-extension-development/)
+- [Tauri 2.0 - Build modern desktop apps](https://tauri.app/)
 
 ## Available commands
 
@@ -92,10 +91,6 @@ Development and build commands:
 - `yarn macos:xcode`: Open the macOS app on XCode
 - `yarn web:start`: Start developing the web app
 - `yarn web:build`: Create a production build of the web app
-- `yarn electron:start`: Start developing the Electron app
-- `yarn electron:package:mac`: Package the production binary of the Electron app for macOS
-- `yarn electron:package:win`: Package the production binary of the Electron app for windows
-- `yarn electron:package:linux`: Package the production binary of the Electron app for linux
 - `yarn browser-ext:start`: Start developing the browser extension
 - `yarn browser-ext:build`: Create a production build of the browser extension
 - `yarn windows:metro`: Start the metro server for Windows
